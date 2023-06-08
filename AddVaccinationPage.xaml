@@ -1,0 +1,66 @@
+﻿<Page x:Class="Pritt.AddVaccinationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Pritt"
+      mc:Ignorable="d" 
+      Loaded="Page_Loaded"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Background="AntiqueWhite"
+      Title="AddVaccinationPage">
+
+    <Grid>
+        <StackPanel VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    MinWidth="200">
+
+            <TextBlock Text="Выберите животное:"/>
+            <ComboBox Name="animalComboBox"
+                      SelectedValue="{Binding SelectedAnimalId}"
+                      Width="200"/>
+
+            <TextBlock Text="Дата проведения вакцинации:"/>
+            <DatePicker Name="vaccinationDatePicker"
+                        SelectedDate="{Binding VaccinationDate}"
+                        Width="200"/>
+
+            <TextBlock Text="Серийный номер:"/>
+            <TextBox Name="serialNumberTextBox"
+                     Text="{Binding SerialNumber}"
+                     Width="200"/>
+
+            <TextBlock Text="Дата окончания действия вакцины:"/>
+            <DatePicker Name="expirationDatePicker"
+                        SelectedDate="{Binding ExpirationDate}"
+                        Width="200"/>
+
+            <TextBlock Text="Выберите ветеринара:"/>
+            <ComboBox Name="vetComboBox"
+                      SelectedValue="{Binding SelectedVetId}"
+                      Width="200"/>
+
+            <TextBlock Text="Выберите муниципальный контракт:"/>
+            <ComboBox Name="municipalContractComboBox"
+                      SelectedValue="{Binding SelectedMunicipalContractId}"
+                      Width="200"/>
+
+            <TextBlock Text="Выберите тип вакцинации:"/>
+            <ComboBox x:Name="vaccinationTypeComboBox"
+                      SelectedValue="{Binding SelectedVaccinationTypeId}"
+                      Width="200"/>
+
+            <Button Margin="0,10"
+                    Height="25"
+                    Width="80"
+                    Content="Добавить"
+                    Click="BtnAdd_Click"/>
+            <Button Margin="0,10"
+                    Height="25"
+                    Width="80"
+                    Content="Назад"
+                    Click="BtnBack_Click"/>
+
+        </StackPanel>
+    </Grid>
+</Page>

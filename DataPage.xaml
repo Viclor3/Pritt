@@ -1,0 +1,142 @@
+﻿<Page x:Class="Pritt.DataPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Pritt"
+      mc:Ignorable="d" 
+      Loaded="Page_Loaded"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="DataPage"
+      Background="AntiqueWhite">
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition/>
+            <RowDefinition Height="60"/>
+
+        </Grid.RowDefinitions>
+
+        <Button Height="20"
+                Width="100"
+                HorizontalAlignment="Left"
+                Margin="10"
+                Content="Назад"
+                Click="BtnBack_Click"/>
+        <Button Height="20"
+                Width="100"
+                HorizontalAlignment="Right"
+                Margin="0 20 20 20"
+                Click="BtnVaccinationChange_Click"
+                Content="Вакцины"/>
+        <Button Height="20"
+                Width="100"
+                HorizontalAlignment="Right"
+                Margin="0 20 135 20"
+                Click="BtnMunicipalChange_Click"
+                Content="Контракты"/>
+        <Button Height="20"
+                Width="100"
+                HorizontalAlignment="Right"
+                Margin="0 20 245 20"
+                Click="BtnOrganizationsChange_Click"
+                Content="Организации"/>
+        <Button Height="20"
+                Width="100"
+                HorizontalAlignment="Right"
+                Margin="0 20 360 20"
+                Click="BtnAnimalChange_Click"
+                Content="Животные"/>
+
+        <DataGrid Grid.Row="1"
+          x:Name="animalsGrid"
+                  AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="30"/>
+                <DataGridTextColumn Header="Регистрационный номер" Binding="{Binding RegistrationNumber}" Width="150"/>
+                <DataGridTextColumn Header="Дата рождения" Binding="{Binding Birthday}" Width="100"/>
+                <DataGridTextColumn Header="Номер чипа" Binding="{Binding ChipNumber}" Width="110"/>
+                <DataGridTextColumn Header="Вид" Binding="{Binding Category.Name}" Width="60"/>
+                <DataGridTextColumn Header="Кличка" Binding="{Binding Nickname}" Width="90"/>
+                <DataGridTextColumn Header="Пол" Binding="{Binding Sex.Name}" Width="60"/>
+                <DataGridTextColumn Header="Приметы" Binding="{Binding SpecialSigns}" Width="*"/>
+                <DataGridTextColumn Header="Город" Binding="{Binding Locality.Name}" Width="90"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <DataGrid Grid.Row="1"
+                  x:Name="municipalGrid"
+                  AutoGenerateColumns="False"
+                  Visibility="Collapsed">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="30"/>
+                <DataGridTextColumn Header="Номер контракта" Binding="{Binding ContractNumber}" Width="*"/>
+                <DataGridTextColumn Header="Дата утверждения" Binding="{Binding AgreementDate}" Width="*"/>
+                <DataGridTextColumn Header="Дата окончания действительности" Binding="{Binding ValidityDate}" Width="*"/>
+                <DataGridTextColumn Header="Заказчик" Binding="{Binding Customer.FullName}" Width="*"/>
+                <DataGridTextColumn Header="Контрактор" Binding="{Binding Contractor.FullName}" Width="*"/>
+                <DataGridTextColumn Header="Город" Binding="{Binding Localities.Name}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <DataGrid Grid.Row="1"
+                  x:Name="organizationsGrid"
+                  AutoGenerateColumns="False"
+                  Visibility="Collapsed">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="30"/>
+                <DataGridTextColumn Header="Полное имя" Binding="{Binding FullName}" Width="*"/>
+                <DataGridTextColumn Header="ИНН" Binding="{Binding Inn}" Width="*"/>
+                <DataGridTextColumn Header="КПП" Binding="{Binding Kpp}" Width="*"/>
+                <DataGridTextColumn Header="Зарегистрированный адрес" Binding="{Binding RegistrationAddress}" Width="*"/>
+                <DataGridTextColumn Header="Тип" Binding="{Binding OrganizationType.Name}" Width="*"/>
+                <DataGridTextColumn Header="Легальность" Binding="{Binding NaturalOrLegalPerson}" Width="*"/>
+                <DataGridTextColumn Header="Город" Binding="{Binding Locality.Name}" Width="*"/>
+                <DataGridTextColumn Header="Сотрудники" Binding="{Binding Users.LastName}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <DataGrid Grid.Row="1"
+          x:Name="vaccinationGrid"
+          AutoGenerateColumns="False"
+          Visibility="Collapsed">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="30"/>
+                <DataGridTextColumn Header="Животное" Binding="{Binding Animal.Nickname}" Width="*"/>
+                <DataGridTextColumn Header="Дата проведения" Binding="{Binding VaccinationDate}" Width="*"/>
+                <DataGridTextColumn Header="Серийный номер" Binding="{Binding SerialNumber}" Width="*"/>
+                <DataGridTextColumn Header="Окончание действия вакцины" Binding="{Binding ExpirationDate}" Width="*"/>
+                <DataGridTextColumn Header="Ветеринар" Binding="{Binding Vet.LastName}" Width="*"/>
+                <DataGridTextColumn Header="Муниципальный контракт" Binding="{Binding MunicipalContract.ContractNumber}" Width="*"/>
+                <DataGridTextColumn Header="Тип вакцинации" Binding="{Binding Type.Name}" Width="*"/>
+                <DataGridTextColumn Header="Сотрудники" Binding="{Binding Vet.LastName}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+        <StackPanel Grid.Row="2"
+                    HorizontalAlignment="Center"
+                    Orientation="Horizontal"
+                    VerticalAlignment="Center">
+
+            <Button Height="24"
+                    Width="150"
+                    Content="Добавить"
+                    Click="BtnAdd_Click"/>
+
+            <Button Height="24"
+                    Width="150"
+                    Content="Изменить"
+                    Click="BtnUpdate_Click"/>
+
+            <Button Height="24"
+                    Width="150"
+                    Content="Удалить"
+                    Click="BtnDelete_Click"/>
+
+        </StackPanel>
+
+    </Grid>
+</Page>

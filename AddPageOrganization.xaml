@@ -1,0 +1,48 @@
+﻿<Page x:Class="Pritt.AddPageOrganization"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Pritt"
+      mc:Ignorable="d" 
+      Loaded="Page_Loaded"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddPageOrganization"
+      Background="AntiqueWhite">
+
+    <Grid>
+        <StackPanel VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    MinWidth="200">
+
+            <TextBlock Text="Полное название"/>
+            <TextBox Name="txFullName"/>
+            <TextBlock Text="ИНН"/>
+            <TextBox Name="txInn"/>
+            <TextBlock Text="КПП"
+                       Margin="0,5,0,0"/>
+            <TextBox Name="txAddress"/>
+            <TextBlock Text="Адрес регистрации"
+                       Margin="0 5"/>
+            <TextBox Name="txKpp"/>
+            <TextBlock Text="Тип"/>
+            <ComboBox Name="cbCategory"/>
+            <TextBlock Text="Легально"/>
+            <TextBox Name="txLegal"/>
+            <TextBlock Text="Город"/>
+            <ComboBox Name="cbLocality"/>
+
+            <Button Margin="0,10"
+                    Height="25"
+                    Width="80"
+                    Content="Добавить"
+                    Click="BtnAdd_OnClick"/>
+            <Button Margin="0,10"
+                    Height="25"
+                    Width="80"
+                    Content="Назад"
+                    Click="BtnGoBack_OnClick"/>
+
+        </StackPanel>
+    </Grid>
+</Page>
